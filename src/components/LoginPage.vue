@@ -138,7 +138,7 @@ export default {
     },
     // moves to the create account page
     createAccount() {
-      this.$router.push({ name: 'CreateAccount' });
+      this.$router.push({ name: 'create-account' });
     },
     // clears the password
     clearPassword() {

@@ -13,7 +13,7 @@
 import CreateAccountPage from '../components/CreateAccountPage.vue'
 </script>
   
-<style>
+<style scoped>
 .create-account {
   min-height: calc(100vh - 60px);
   display: flex;
