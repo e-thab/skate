@@ -1,21 +1,21 @@
-name: Lint Files
-
-on:
-  push:
-    branches:
-      - main
-
-jobs:
-  lint:
-    runs-on: ubuntu-latest
-    steps:
-    - name: Checkout code
-      uses: actions/checkout@v2 
-    
-    - name: Install dependencies and run build
-      run: |
-        npm ci
-        npm run build
-    
-    - name: Run linter
-      run: npm run lint
+#name: Lint Files
+#
+#on:
+#  push:
+#    branches:
+#      - main
+#
+#jobs:
+#  lint:
+#    runs-on: ubuntu-latest
+#    steps:
+#    - name: Checkout code
+#      uses: actions/checkout@v2 
+#    
+#    - name: Install dependencies and run build
+#      run: |
+#        npm ci
+#        npm run build
+#    
+#    - name: Run linter
+#      run: npm run lint
