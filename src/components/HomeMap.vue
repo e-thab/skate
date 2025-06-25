@@ -12,12 +12,6 @@ defineExpose({createPin, deletePin})
 
 // Using vue3-google-map package to implement the Google Maps API
 // Repo + documentation: https://github.com/inocan-group/vue3-google-map
-// const maps_api_key = ref([])
-// async function get_maps_api_key() {
-//   // Get and assign Google Maps API key
-//   console.log(process.env.MAPS_API_KEY)
-// }
-const maps_api_key = ref(import.meta.env.MAPS_API_KEY)
 
 async function createPin(name, desc, lat, lon, rating, picture, difficulty) {
   // Insert a pin into the database
@@ -216,14 +210,13 @@ const shape = {
 onMounted(() => {
   // Assign database spots array to reactive spots array on mount
   getSpots()
-  console.log(maps_api_key)
 })
 </script>
 
 <template>
   <GoogleMap
     ref="mapRef"
-    api-key="maps_api_key"
+    api-key="AIzaSyCwzZFoGNcxoRMmQOlwrB81ShKfQNW1U6o"
     style="width: 100%; height: 100%"
     :center="center"
     :restriction="{latLngBounds: restrictionBounds}"
