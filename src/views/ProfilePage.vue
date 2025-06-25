@@ -4,7 +4,7 @@
     <div class="cols__container">
       <div class="left__col">
         <div class="img__container">
-          <img src="../img/user.jpeg" alt="Anna Smith" />
+          <img src="../img/user.jpg" alt="Anna Smith" />
           <span></span>
         </div>
         <h2>Anna Smith</h2>
