@@ -1,4 +1,4 @@
-Skate the Tide: https://main--skatethetide.netlify.app
+Skate the Tide: https://e-thab.github.io/skate/
 
 Welcome to the Skate the Tide web app. This README provides an overview of the project and instructions for getting started with development and usage
 
