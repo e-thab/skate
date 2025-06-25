@@ -6,8 +6,8 @@
   "scripts": {
     "start": "node src/assets/database.js",
     "dev": "vite",
-    "build": "run-p type-check \"build-only {@}\" --",
-    "vbuild": "vite build",
+    "build": "vite build",
+    "v-build": "run-p type-check \"build-only {@}\" --",
     "preview": "vite preview",
     "test:unit": "vitest",
     "test:e2e": "playwright test",
