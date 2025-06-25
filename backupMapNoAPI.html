@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Coordinate Display</title>
+<style>
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+#container {
+    width: 100%;
+    height: 100%;
+    border: 1px solid black;
+    display: grid;
+    grid-template-columns: repeat(3, 33.33%); /* 3 columns */
+    grid-template-rows: repeat(4, 1fr); /* 4 rows, each taking up remaining space */
+}
+
+.rect {
+    border: 1px solid #ccc; /* Thin grey border */
+    background-size: 100% 100%; /* Ensure the background image fills the entire grid rectangle */
+    background-position: center; /* Center the background image */
+    height: 100%; /* Make each grid pane take up the entire height of its grid cell */
+}
+
+.rect:hover {
+    background-color: rgba(173, 216, 230, 0.5);
+}
+
+#coordinates {
+    position: absolute;
+    padding: 5px;
+    background-color: rgba(255, 255, 255, 0.7);
+    border: 1px solid black;
+}
+
+/* Apply a background color to grid cells without map images */
+.rect.empty {
+    background-color: #fff; /* Adjust as needed */
+}
+</style>
+</head>
+<body>
+
+<div id="container" style="background-image: url('C:\Users\castl\Downloads\proj_background.jpg');">
+    <!-- Adding grid rectangles with background images from the same folder -->
+    <div class="rect" style="background-image: url('9p.png');"></div>
+    <div class="rect" style="background-image: url('8p.png');"></div>
+    <div class="rect" style="background-image: url('7p.png');"></div>
+    <div class="rect" style="background-image: url('6p.png');"></div>
+    <div class="rect" style="background-image: url('5p.png');"></div>
+    <div class="rect" style="background-image: url('4p.png');"></div>
+    <div class="rect" style="background-image: url('3p.png');"></div>
+    <div class="rect" style="background-image: url('2p.png');"></div>
+    <div class="rect" style="background-image: url('1p.png');"></div>
+    <!-- Add more grid rectangles with different background images from the same folder as needed -->
+    <!-- Add empty grid cells to fill the remaining space -->
+    <div class="rect empty"></div>
+    <div class="rect empty"></div>
+    <div class="rect empty"></div>
+</div>
+    
+<div id="coordinates"></div>
+
+<script>
+    const container = document.getElementById('container');
+    const coordinates = document.getElementById('coordinates');
+    const rects = document.querySelectorAll('.rect');
+
+    // Define the range of coordinates for each axis
+    const minX = 34.169460;
+    const maxX = 34.27875;
+    const minY = -77.962571;
+    const maxY = -77.82927;
+
+    container.addEventListener('mousemove', function(event) {
+        const rect = container.getBoundingClientRect();
+        
+        // Map mouse position to the range of each axis
+        const xRange = maxX - minX;
+        const yRange = maxY - minY;
+        const x = ((event.clientX - rect.left) / rect.width) * xRange + minX;
+        const y = ((rect.bottom - event.clientY) / rect.height) * yRange + minY;
+
+        // Format coordinates with appropriate decimal places
+        const xFormatted = x.toFixed(6);
+        const yFormatted = y.toFixed(6);
+
+        coordinates.textContent = `(${xFormatted}, ${yFormatted})`;
+        coordinates.style.display = 'block';
+        coordinates.style.left = `${event.clientX + 10}px`;
+        coordinates.style.top = `${event.clientY + 10}px`;
+    });
+
+    // Add mousedown event to change color of clicked grid pane to red
+    rects.forEach(rect => {
+        rect.addEventListener('mousedown', function(event) {
+            event.target.style.backgroundColor = 'red';
+        });
+
+        // Add mouseup event to restore original or hover color after clicking
+        rect.addEventListener('mouseup', function(event) {
+            event.target.style.backgroundColor = ''; // Restore to normal or hover color
+        });
+    });
+</script>
+
+</body>
+</html>
